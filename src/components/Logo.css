@@ -1,0 +1,28 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  color: var(--text-primary);
+  line-height: 1;
+  user-select: none;
+}
+
+.logo__hex {
+  height: var(--logo-h);
+  width: auto;
+  flex-shrink: 0;
+}
+
+.logo__c {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 56px;
+  fill: currentColor;
+}
+
+.logo__word {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: calc(var(--logo-h) * 0.82);
+  letter-spacing: -0.03em;
+}

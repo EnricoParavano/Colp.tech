@@ -1,0 +1,317 @@
+.services {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── Blueprint grid + markers (same language as hero) ───────────────────── */
+.services__grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(18, 51, 212, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 51, 212, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 55% at 30% 18%, black 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 55% at 30% 18%, black 20%, transparent 75%);
+  pointer-events: none;
+}
+
+.services__markers {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.services__marker {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--brand);
+  opacity: 0.3;
+  line-height: 1;
+}
+
+.services .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+.services__header {
+  margin-bottom: 72px;
+  max-width: 720px;
+}
+
+/* ─── Split layout ───────────────────────────────────────────────────────── */
+.services-split {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 72px;
+  align-items: start;
+}
+
+/* ─── Index rows (left) ──────────────────────────────────────────────────── */
+.services-split__index {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 44px 1fr 32px;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  text-align: left;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--border-solid);
+  transition: padding-left 300ms var(--ease-out-expo);
+}
+
+.services-split__index > div:first-child .service-row {
+  border-top: 1px solid var(--border-solid);
+}
+
+.service-row__num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  transition: color 250ms ease;
+}
+
+.service-row__title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 3.4vw, 46px);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--text-primary);
+  transition: color 250ms ease;
+}
+
+.service-row__arrow {
+  color: var(--brand);
+  opacity: 0;
+  transform: translateX(-10px) rotate(-45deg);
+  transition: opacity 250ms ease, transform 350ms var(--ease-out-expo);
+}
+
+.service-row--active {
+  padding-left: 8px;
+}
+
+.service-row--active .service-row__num {
+  color: var(--brand);
+}
+
+.service-row--active .service-row__title {
+  color: var(--brand);
+  font-style: italic;
+}
+
+.service-row--active .service-row__arrow {
+  opacity: 1;
+  transform: translateX(0) rotate(0deg);
+}
+
+/* ─── Detail panel (right, desktop) ──────────────────────────────────────── */
+.service-detail {
+  position: sticky;
+  top: 120px;
+  border: 1px solid var(--border-solid);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  padding: 48px;
+  min-height: 380px;
+  overflow: hidden;
+  background-image:
+    linear-gradient(rgba(18, 51, 212, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 51, 212, 0.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Hexagon watermark */
+.service-detail__hex {
+  position: absolute;
+  bottom: -15%;
+  right: -12%;
+  width: 55%;
+  color: var(--brand);
+  opacity: 0.1;
+  pointer-events: none;
+  animation: hexSlowSpin 80s linear infinite;
+}
+
+@keyframes hexSlowSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Crosshair in panel corner */
+.service-detail__corner {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  font-size: 16px;
+  color: var(--brand);
+  opacity: 0.35;
+  line-height: 1;
+}
+
+/* Mono meta line — index + key, blueprint style */
+.service-detail__meta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  margin-bottom: 28px;
+}
+
+.service-detail__meta-index {
+  color: var(--brand);
+  font-variant-numeric: tabular-nums;
+}
+
+.service-detail__meta-key {
+  text-transform: uppercase;
+  padding-left: 14px;
+  border-left: 1px solid var(--border-solid);
+}
+
+.service-detail__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+
+.service-detail__icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-detail__icon--dev {
+  background: var(--accent-dev-bg);
+  color: var(--accent-dev-text);
+}
+
+.service-detail__icon--consult {
+  background: var(--accent-consult-bg);
+  color: var(--accent-consult-text);
+}
+
+.service-detail__icon--design {
+  background: var(--accent-design-bg);
+  color: var(--accent-design-text);
+}
+
+.service-detail__desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 48ch;
+}
+
+/* Square mono badges instead of pills */
+.service-detail__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.service-detail__tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border: 1px solid var(--border-solid);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  background: var(--bg);
+}
+
+.service-detail__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--brand);
+  transition: gap 250ms var(--ease-out-expo);
+}
+
+.service-detail__cta:hover {
+  gap: 14px;
+}
+
+/* Inline detail — hidden on desktop */
+.service-row__inline {
+  display: none;
+  overflow: hidden;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .services-split {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .service-detail {
+    display: none;
+  }
+
+  .service-row__inline {
+    display: block;
+  }
+
+  .service-row__inline-pad {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 4px 0 32px;
+  }
+
+  .service-row {
+    padding: 26px 0;
+    grid-template-columns: 36px 1fr 28px;
+    gap: 14px;
+  }
+
+  .service-row--active {
+    border-bottom-color: transparent;
+    padding-left: 0;
+  }
+
+  .service-row__inline {
+    border-bottom: 1px solid var(--border-solid);
+  }
+
+  .services__header {
+    margin-bottom: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .services__marker {
+    display: none;
+  }
+
+  .services__grid-bg {
+    background-size: 40px 40px;
+  }
+}

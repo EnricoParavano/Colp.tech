@@ -1,0 +1,155 @@
+.about {
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -10%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle at center, oklch(90% 0.045 264) 0%, transparent 70%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ─── Blueprint grid + markers ───────────────────────────────────────────── */
+.about__grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(18, 51, 212, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(18, 51, 212, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 55% at 25% 22%, black 18%, transparent 74%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 55% at 25% 22%, black 18%, transparent 74%);
+  pointer-events: none;
+}
+
+.about__markers {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about__marker {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--brand);
+  opacity: 0.3;
+  line-height: 1;
+}
+
+/* Large background year — outlined, like the hero accent */
+.about__year-bg {
+  position: absolute;
+  top: 50%;
+  right: -2%;
+  transform: translateY(-50%);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(160px, 18vw, 280px);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  -webkit-text-stroke: 2px var(--brand);
+  color: transparent;
+  opacity: 0.07;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.about__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.about__header {
+  position: sticky;
+  top: 100px;
+}
+
+.about__title {
+  white-space: pre-line;
+}
+
+/* Values list */
+.about__values {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__value {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 24px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--border-solid);
+}
+
+.about__value:first-child {
+  border-top: 1px solid var(--border-solid);
+}
+
+.about__value-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  padding-top: 4px;
+  transition: color 200ms ease;
+}
+
+.about__value:hover .about__value-num {
+  color: var(--brand);
+}
+
+.about__value:hover .about__value-title {
+  color: var(--brand);
+  font-style: italic;
+}
+
+.about__value-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  transition: color 200ms ease;
+}
+
+.about__value-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 50ch;
+}
+
+@media (max-width: 900px) {
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about__header {
+    position: static;
+  }
+
+  .about__marker {
+    display: none;
+  }
+
+  .about__year-bg {
+    -webkit-text-stroke-width: 1.5px;
+  }
+}

@@ -1,0 +1,63 @@
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--brand);
+  transform-origin: 0%;
+  z-index: 200;
+}
+
+/* Custom cursor — desktop only */
+@media (pointer: fine) {
+  * { cursor: none !important; }
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: width 300ms var(--ease-out-expo),
+              height 300ms var(--ease-out-expo),
+              border-color 300ms ease,
+              opacity 200ms ease,
+              background 300ms ease;
+}
+
+.cursor-ring--hover {
+  width: 56px;
+  height: 56px;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.cursor-ring--hidden {
+  opacity: 0;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: opacity 200ms ease, transform 150ms ease;
+}
+
+.cursor-dot--hidden {
+  opacity: 0;
+}
