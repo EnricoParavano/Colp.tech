@@ -35,9 +35,14 @@ export function Navbar() {
 
         <nav className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
           {navLinks.map(link => (
-            <NavLink key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
+            <a
+              key={link.href}
+              href={link.href}
+              className="navbar__link"
+              onClick={() => setMenuOpen(false)}
+            >
               {link.label}
-            </NavLink>
+            </a>
           ))}
         </nav>
 
@@ -81,26 +86,5 @@ export function Navbar() {
         </div>
       </div>
     </motion.header>
-  )
-}
-
-function NavLink({ href, children, onClick }) {
-  const [hovered, setHovered] = useState(false)
-
-  return (
-    <a
-      href={href}
-      className="navbar__link"
-      onClick={onClick}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {children}
-      <motion.span
-        className="navbar__link-underline"
-        animate={{ scaleX: hovered ? 1 : 0 }}
-        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-      />
-    </a>
   )
 }
